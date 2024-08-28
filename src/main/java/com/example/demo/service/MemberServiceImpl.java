@@ -17,7 +17,7 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public Member saveMember(Member member) {
-       return memberRepository.save(member);
+        return memberRepository.save(member);
     }
 
     @Override
@@ -29,6 +29,7 @@ public class MemberServiceImpl implements MemberService {
     public void deleteMember(int memberId) {
         memberRepository.deleteById(memberId);
     }
+
     @Override
     public Member updateMember(Member member) {
         return memberRepository.save(member);

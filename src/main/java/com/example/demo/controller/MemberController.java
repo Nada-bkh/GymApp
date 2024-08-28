@@ -13,22 +13,26 @@ public class MemberController {
     @Autowired
     public MemberService memberService;
 
-    //we use get
+    //we use get method
     @PostMapping("/add")
     public String add(@RequestBody Member member) {
         memberService.saveMember(member);
         return "New member is added";
     }
+
+    //we use get method
     @PostMapping("/getAll")
     public List<Member> getAllMembers() {
         return memberService.getAllMembers();
     }
+
     //we use delete method
-    @DeleteMapping("/{memberId}")
+    @DeleteMapping("/delete/{memberId}")
     public String deleteMember(@PathVariable int memberId) {
         memberService.deleteMember(memberId);
         return "Member deleted successfully";
     }
+
     //we use put method
     @PutMapping("/update/{memberId}")
     public Member updateMember(@PathVariable int memberId, @RequestBody Member member) {
