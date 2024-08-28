@@ -1,2 +1,2 @@
 # GymApp
-Back office gym app using spring for backend and react for frontend
+Back office gym website using spring for backend and react for frontend
