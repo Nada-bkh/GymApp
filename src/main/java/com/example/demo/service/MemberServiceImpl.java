@@ -13,8 +13,6 @@ public class MemberServiceImpl implements MemberService {
     @Autowired
     public MemberRepository memberRepository;
 
-    public Member member;
-
     @Override
     public Member saveMember(Member member) {
         return memberRepository.save(member);
