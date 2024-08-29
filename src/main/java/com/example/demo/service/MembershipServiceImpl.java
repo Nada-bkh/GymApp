@@ -13,7 +13,7 @@ public class MembershipServiceImpl implements MembershipService {
     public MembershipRepository membershipRepository;
 
     @Override
-    public Membership addMembership(Membership membership) {
+    public Membership saveOrUpdateMembership(Membership membership) {
         return membershipRepository.save(membership);
     }
 
@@ -27,8 +27,4 @@ public class MembershipServiceImpl implements MembershipService {
         membershipRepository.deleteById(membershipId);
     }
 
-    @Override
-    public Membership updateMembership(Membership membership) {
-        return membershipRepository.save(membership);
-    }
 }

@@ -17,7 +17,7 @@ public class Member {
     private String phone_number;
     private String gender, job;
     private LocalDate birthdate;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "membership_id")
     private Membership membership;
 

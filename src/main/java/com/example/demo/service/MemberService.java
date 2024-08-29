@@ -6,12 +6,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 public interface MemberService {
-    public Member saveMember(Member member);
+    public Member saveOrUpdateMember(Member member);
 
     public List<Member> getAllMembers();
 
     public void deleteMember(int memberId);
-
-    public Member updateMember(Member member);
 
 }

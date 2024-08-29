@@ -18,7 +18,7 @@ public class MemberController {
     //we use post method
     @PostMapping("/add")
     public ResponseEntity<Member> add(@RequestBody Member member) {
-        Member newMember = memberService.saveMember(member);
+        Member newMember = memberService.saveOrUpdateMember(member);
         return new ResponseEntity<>(newMember, HttpStatus.CREATED);
     }
 
@@ -39,6 +39,6 @@ public class MemberController {
     @PutMapping("/update/{memberId}")
     public Member updateMember(@PathVariable int memberId, @RequestBody Member member) {
         member.setId(memberId);
-        return memberService.updateMember(member);
+        return memberService.saveOrUpdateMember(member);
     }
 }

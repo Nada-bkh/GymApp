@@ -17,7 +17,7 @@ public class MembershipController {
     //we use get method
     @PostMapping("/add")
     public String add(@RequestBody Membership membership) {
-        membershipService.addMembership(membership);
+        membershipService.saveOrUpdateMembership(membership);
         return "New membership is added";
     }
 
@@ -38,6 +38,6 @@ public class MembershipController {
     @PutMapping("/update/{membershipId}")
     public Membership updateMembership(@PathVariable int membershipId, @RequestBody Membership membership) {
         membership.setId(membershipId);
-        return membershipService.updateMembership(membership);
+        return membershipService.saveOrUpdateMembership(membership);
     }
 }
