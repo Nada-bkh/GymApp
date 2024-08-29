@@ -3,6 +3,8 @@ package com.example.demo.controller;
 import com.example.demo.model.Member;
 import com.example.demo.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,14 +15,14 @@ public class MemberController {
     @Autowired
     public MemberService memberService;
 
-    //we use get method
+    //we use post method
     @PostMapping("/add")
-    public String add(@RequestBody Member member) {
-        memberService.saveMember(member);
-        return "New member is added";
+    public ResponseEntity<Member> add(@RequestBody Member member) {
+        Member newMember = memberService.saveMember(member);
+        return new ResponseEntity<>(newMember, HttpStatus.CREATED);
     }
 
-    //we use get method
+    //we use post method
     @PostMapping("/getAll")
     public List<Member> getAllMembers() {
         return memberService.getAllMembers();
@@ -30,7 +32,7 @@ public class MemberController {
     @DeleteMapping("/delete/{memberId}")
     public String deleteMember(@PathVariable int memberId) {
         memberService.deleteMember(memberId);
-        return "Member deleted successfully";
+        return "Membership deleted successfully";
     }
 
     //we use put method
