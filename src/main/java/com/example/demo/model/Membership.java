@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -17,6 +18,7 @@ public class Membership {
     private int duration;
     private float cost;
     @OneToMany(mappedBy = "membership")
+    @JsonIgnore
     private List<Member> members;
 
     public Membership() {
