@@ -17,10 +17,13 @@ public class Member {
     private String phone_number;
     private String gender, job;
     private LocalDate birthdate;
+    //ToDo 1: fix jointures ; change the membership_id to id and fix error
+    //Note to self: best to change all ids to significant names (memberId, membershipId ...)
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "membership_id")
     private Membership membership;
 
+    //ToDo 2: add a foreign key courseId ; OneToMany relation between member and courses
     public Member() {
     }
 

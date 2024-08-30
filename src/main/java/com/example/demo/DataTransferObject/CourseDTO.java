@@ -12,7 +12,8 @@ public class CourseDTO {
     private int capacity;
     private List<CoachDTO> coaches;
 
-    public CourseDTO() {}
+    public CourseDTO() {
+    }
 
     public CourseDTO(int id, String name, String description, String level, int duration, Timestamp startTime,
                      Timestamp endTime, String dayOfTheWeek, String room, int capacity, List<CoachDTO> coaches) {

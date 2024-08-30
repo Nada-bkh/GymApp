@@ -13,14 +13,14 @@ import java.util.stream.Collectors;
 
 @Service
 public class CoachServiceImpl implements CoachService {
+    //ToDo 3: add search and filter methods to all services
     @Autowired
     public CoachRepository coachRepository;
+
     @Override
     public Coach saveOrUpdateCoach(Coach coach) {
         return coachRepository.save(coach);
     }
-
-
 
     @Override
     public void deleteCoach(int coachId) {

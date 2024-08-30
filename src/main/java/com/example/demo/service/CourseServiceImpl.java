@@ -28,6 +28,11 @@ public class CourseServiceImpl implements CourseService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public void deleteCourse(int courseId) {
+        courseRepository.deleteById(courseId);
+    }
+
     private CourseDTO convertCourseToDTO(Course course) {
         List<CoachDTO> coachDTOs = course.getCoaches().stream()
                 .map(coach -> new CoachDTO(coach.getId(), coach.getFirstname(), coach.getLastname(), coach.getEmail(),
@@ -38,10 +43,5 @@ public class CourseServiceImpl implements CourseService {
         return new CourseDTO(course.getId(), course.getName(), course.getDescription(), course.getLevel(),
                 course.getDuration(), course.getStartTime(), course.getEndTime(), course.getDayOfTheWeek(),
                 course.getRoom(), course.getCapacity(), coachDTOs);
-    }
-
-    @Override
-    public void deleteCourse(int courseId) {
-        courseRepository.deleteById(courseId);
     }
 }

@@ -11,7 +11,8 @@ public class CoachDTO {
     private String specialty;
     private List<CourseDTO> courses;
 
-    public CoachDTO() {}
+    public CoachDTO() {
+    }
 
     public CoachDTO(int id, String firstname, String lastname, String email, String phone_number, String gender,
                     LocalDate birthdate, LocalDate hireDate, float salary, String specialty, List<CourseDTO> courses) {
