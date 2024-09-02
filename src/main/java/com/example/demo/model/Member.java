@@ -1,38 +1,39 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column(name = "id")
+    private int memberId;
     private String firstname;
     private String lastname;
     private String phone_number;
     private String gender, job;
     private LocalDate birthdate;
-    //ToDo 1: fix jointures ; change the membership_id to id and fix error
-    //Note to self: best to change all ids to significant names (memberId, membershipId ...)
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "membership_id")
-    private Membership membership;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Membership> membershipList;
 
     //ToDo 2: add a foreign key courseId ; OneToMany relation between member and courses
     public Member() {
     }
 
     public int getId() {
-        return id;
+        return memberId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int memberId) {
+        this.memberId = memberId;
     }
 
     public String getFirstname() {
@@ -83,12 +84,12 @@ public class Member {
         this.phone_number = phone_number;
     }
 
-    public Membership getMembership() {
-        return membership;
+    public List<Membership> getMembershipList() {
+        return membershipList;
     }
 
-    public void setMembership(Membership membership) {
-        this.membership = membership;
+    public void setMembershipList(List<Membership> membershipList) {
+        this.membershipList = membershipList;
     }
 
     @Override
@@ -96,11 +97,11 @@ public class Member {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Member member = (Member) o;
-        return id == member.id;
+        return memberId == member.memberId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(memberId);
     }
 }

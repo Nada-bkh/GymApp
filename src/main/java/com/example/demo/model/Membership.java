@@ -11,25 +11,26 @@ import java.util.Objects;
 public class Membership {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column(name = "id")
+    private int membershipId;
     private String type;
     private LocalDate startDate;
     private LocalDate endDate;
     private int duration;
     private float cost;
-    @OneToMany(mappedBy = "membership")
-    @JsonIgnore
-    private List<Member> members;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "memberId")
+    private Member member;
 
     public Membership() {
     }
 
     public int getId() {
-        return id;
+        return membershipId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int membershipId) {
+        this.membershipId = membershipId;
     }
 
     public String getType() {
@@ -72,12 +73,12 @@ public class Membership {
         this.cost = cost;
     }
 
-    public List<Member> getMembers() {
-        return members;
+    public Member getMember() {
+        return member;
     }
 
-    public void setMembers(List<Member> members) {
-        this.members = members;
+    public void setMember(Member member) {
+        this.member = member;
     }
 
     @Override
@@ -85,11 +86,11 @@ public class Membership {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Membership that = (Membership) o;
-        return id == that.id;
+        return membershipId == that.membershipId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(membershipId);
     }
 }

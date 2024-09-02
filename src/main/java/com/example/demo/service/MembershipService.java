@@ -6,7 +6,7 @@ import com.example.demo.model.Membership;
 import java.util.List;
 
 public interface MembershipService {
-    public Membership saveOrUpdateMembership(Membership membership);
+    public Membership saveOrUpdateMembership( Membership membership);
 
     public List<Membership> getAllMemberships();
 
